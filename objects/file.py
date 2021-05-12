@@ -12,6 +12,7 @@ class FSfile:
         self._tgt_folder = ""
         self._tgt_filename = ""
         self._type = ""
+        self._media_tag = ""
         self._size = 0
         self._date_taken = ""
 
@@ -29,12 +30,6 @@ class FSfile:
 
     def set_tgt_filename(self, filename):
         self._tgt_filename = filename
-
-    def get_full_path(self):
-        return self._src_dir + self._filename
-
-    def get_full_tgt_path(self):
-        return self._tgt_dir + self._tgt_filename
 
     def get_src_dir(self):
         return self._src_dir
@@ -59,6 +54,12 @@ class FSfile:
 
     def set_type(self, type):
         self._type = type
+
+    def get_media_tag(self):
+        return self._media_tag
+
+    def set_media_tag(self, tag):
+        self._media_tag = tag
 
     def get_size(self):
         return self._size

@@ -32,19 +32,19 @@ class FileUtils:
         return file_type
 
     @staticmethod
-    def get_file_category(filename):
+    def get_media_type(filename):
         # Initialize type as other
-        tgt_folder = Rules.get_oth_dir()
+        media_type: str = Rules.get_oth_dir()
 
         f_ext = FileUtils.get_file_type(filename)
 
         # Check extension and switch to image or video
         if f_ext in Rules.get_img_types():
-            tgt_folder = Rules.get_img_dir()
+            media_type = Rules.get_img_dir()
         elif f_ext in Rules.get_vid_dir():
-            tgt_folder = Rules.get_vid_dir()
+            media_type = Rules.get_vid_dir()
 
-        return tgt_folder
+        return media_type
 
     @staticmethod
     def move_file(src_f, tgt_dir, tgt_filename):
@@ -81,8 +81,8 @@ class FileUtils:
         return False
 
     @staticmethod
-    def does_file_exist(filename, tgt_dir):
-        return os.path.isfile(str(tgt_dir)+str(filename))
+    def does_file_exist(filename, dir):
+        return pathlib.Path(str(dir)+str(filename)).exists()
 
     @staticmethod
     def add_suffix(filename, suffix):
@@ -101,6 +101,10 @@ class FileUtils:
 
         # If we get to this point, a file either doesn't exist or it didn't match
         return False
+
+    @staticmethod
+    def join_filepath(dir, filename):
+        return os.path.join(dir, filename)
 
     @staticmethod
     def get_file_size(f):
