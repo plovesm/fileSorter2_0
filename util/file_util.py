@@ -104,10 +104,8 @@ class FileUtils:
 
     @staticmethod
     def get_file_size(f):
-        file = pathlib.Path(f)
-
-        if file.exists():
-            return file.stat().st_size
+        if FileUtils.does_file_exist(f, ""):
+            return pathlib.Path(f).stat().st_size
         else:
             return 0
 
