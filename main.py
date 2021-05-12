@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     # Fill up the collection from a given directory by recursively crawl folder
     all_files = NavUtils.walk_dir(START_DIRECTORY)
-    print(all_files[0])
+    print(all_files[0].__dict__)
     #TODO Parse info to flat file db
 
     # PHASE TWO

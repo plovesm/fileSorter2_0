@@ -37,8 +37,8 @@ OLDEST_YEAR = 2002
 
 DEBUG = False
 
-IMG_TYPES = ["jpg", "png", "gif", "bmp", "jpeg", "nef", "tif"]
-VID_TYPES = ["mpg", "mp4", "mpeg", "flv", "wmv", "mov", "avi", "3gp", "dv", "m4v"]
+IMG_TYPES = ["jpg", "png", "gif", "bmp", "jpeg", "nef", "tif", "heif", "heic"]
+VID_TYPES = ["mpg", "mp4", "mpeg", "flv", "wmv", "mov", "avi", "3gp", "dv", "m4v", "hevc"]
 
 
 class Rules:

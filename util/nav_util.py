@@ -3,8 +3,9 @@
 # @copyright 2021
 import os
 
-from util import FileUtils
+from util import FileUtils, MediaUtils
 from objects import FSfile
+
 
 class NavUtils:
 
@@ -21,19 +22,19 @@ class NavUtils:
                     full_filename: str = FileUtils.join_filepath(root, filename)
 
                     # Step 1: Build the file object with name and location
-                    currFile = FSfile()
-                    currFile.set_filename(filename)
-                    currFile.set_src_dir(root)
+                    curr_file = FSfile()
+                    curr_file.set_filename(filename)
+                    curr_file.set_src_dir(root)
 
                     # Step 2: Add metadata of size and date to object
-                    currFile.set_size(FileUtils.get_file_size(full_filename))
-                    currFile.set_date_taken(FileUtils.get_file_size(full_filename))
+                    curr_file.set_size(FileUtils.get_file_size(full_filename))
+                    curr_file.set_date_taken(MediaUtils.get_date_taken(curr_file))
 
                     # Step 3: Determine file type and tag
-                    currFile.set_type(FileUtils.get_file_type(filename))
-                    currFile.set_media_tag(FileUtils.get_media_type(filename))
+                    curr_file.set_type(FileUtils.get_file_type(filename))
+                    curr_file.set_media_tag(FileUtils.get_media_type(filename))
 
                     # Step 4: Add file to collection
-                    all_files.append(currFile)
+                    all_files.append(curr_file)
 
         return all_files

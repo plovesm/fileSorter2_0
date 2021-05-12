@@ -103,8 +103,8 @@ class FileUtils:
         return False
 
     @staticmethod
-    def join_filepath(dir, filename):
-        return os.path.join(dir, filename)
+    def join_filepath(root_dir, filename):
+        return os.path.join(root_dir, filename)
 
     @staticmethod
     def get_file_size(f):
