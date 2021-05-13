@@ -13,7 +13,7 @@ class NavUtils:
     @staticmethod
     def walk_dir(start_dir):
         # Build empty container for the files
-        all_files = []
+        all_files = {"files": []}
 
         if os.path.isdir(start_dir):
             # Walk the directory and count the files
@@ -26,15 +26,15 @@ class NavUtils:
                     curr_file.set_filename(filename)
                     curr_file.set_src_dir(root)
 
-                    # Step 2: Add metadata of size and date to object
-                    curr_file.set_size(FileUtils.get_file_size(full_filename))
-                    curr_file.set_date_taken(MediaUtils.get_date_taken(curr_file))
-
-                    # Step 3: Determine file type and tag
+                    # Step 2: Determine file type and tag
                     curr_file.set_type(FileUtils.get_file_type(filename))
                     curr_file.set_media_tag(FileUtils.get_media_type(filename))
 
+                    # Step 3: Add metadata of size and date to object
+                    curr_file.set_size(FileUtils.get_file_size(full_filename))
+                    curr_file.set_date_taken(MediaUtils.get_date_taken(curr_file))
+
                     # Step 4: Add file to collection
-                    all_files.append(curr_file)
+                    all_files["files"].append(curr_file)
 
         return all_files

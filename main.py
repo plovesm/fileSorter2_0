@@ -4,9 +4,12 @@
 import datetime
 
 # Define Default Start and Target Directories
+import json
+
+from util import FileUtils
 from util.nav_util import NavUtils
 
-START_DIRECTORY: str = r"C:\Users\ott19\Pictures"
+START_DIRECTORY: str = r"C:\Users\ott19\Pictures\DCIM"
 TARGET_DIRECTORY: str = r"C:\Users\ott19\Desktop\TGTsorted"
 
 
@@ -21,8 +24,12 @@ if __name__ == '__main__':
 
     # Fill up the collection from a given directory by recursively crawl folder
     all_files = NavUtils.walk_dir(START_DIRECTORY)
-    print(all_files[0].__dict__)
+    json_str = FileUtils.json_serialize(all_files)
+
     #TODO Parse info to flat file db
+    with open('files_db.txt', 'w') as outfile:
+        outfile.write(json_str)
+        outfile.close()
 
     # PHASE TWO
 

@@ -1,6 +1,7 @@
 # FSfile
 # @author Paul Ottley
 # @copyright 2017
+import json
 
 
 class FSfile:
@@ -72,3 +73,6 @@ class FSfile:
 
     def set_date_taken(self, date_taken):
         self._date_taken = date_taken
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__)

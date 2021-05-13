@@ -2,12 +2,18 @@
 # @author Paul Ottley
 # @copyright 2017
 import hashlib
+import json
 import pathlib
 import os
 from shutil import copyfile
 from shutil import move
 
+from objects import FSfile
 from util.fs_rules import Rules
+
+
+def to_json(obj):
+    return obj.__dict__
 
 
 class FileUtils:
@@ -126,6 +132,17 @@ class FileUtils:
             return hasher.hexdigest()
         else:
             return "file doesn't exist"
+
+    @staticmethod
+    def json_serialize(serial_obj=None) -> str:
+        json_str = json.dumps(serial_obj, default=to_json)
+
+        return json_str
+
+    @staticmethod
+    def json_deserialize(json_str) -> []:
+        #TODO implement deserialization
+        return []
 
     @staticmethod
     def delete_file():
